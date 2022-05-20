@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Attachedfile index{% endblock %}
+
+{% block body %}
+    <h1>Attachedfile index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>IP</th>
+                <th>Zone</th>
+                <th>ORACLE_HOME_Path</th>
+                <th>ORACLE_BASE_Path</th>
+                <th>ORACLE_SID</th>
+                <th>SGA</th>
+                <th>PGA</th>
+                <th>ORACLE_version</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for attachedfile in attachedfiles %}
+            <tr>
+                <td>{{ attachedfile.id }}</td>
+                <td>{{ attachedfile.name }}</td>
+                <td>{{ attachedfile.IP }}</td>
+                <td>{{ attachedfile.Zone }}</td>
+                <td>{{ attachedfile.ORACLEHOMEPath }}</td>
+                <td>{{ attachedfile.ORACLEBASEPath }}</td>
+                <td>{{ attachedfile.ORACLESID }}</td>
+                <td>{{ attachedfile.SGA }}</td>
+                <td>{{ attachedfile.PGA }}</td>
+                <td>{{ attachedfile.ORACLEVersion ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_attachedfile_show', {'id': attachedfile.id}) }}">show</a>
+                    <a href="{{ path('app_attachedfile_edit', {'id': attachedfile.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_attachedfile_new') }}">Create new</a>
+{% endblock %}

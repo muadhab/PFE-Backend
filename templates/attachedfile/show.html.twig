@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Attachedfile{% endblock %}
+
+{% block body %}
+    <h1>Attachedfile</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ attachedfile.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ attachedfile.name }}</td>
+            </tr>
+            <tr>
+                <th>IP</th>
+                <td>{{ attachedfile.IP }}</td>
+            </tr>
+            <tr>
+                <th>Zone</th>
+                <td>{{ attachedfile.Zone }}</td>
+            </tr>
+            <tr>
+                <th>ORACLE_HOME_Path</th>
+                <td>{{ attachedfile.ORACLEHOMEPath }}</td>
+            </tr>
+            <tr>
+                <th>ORACLE_BASE_Path</th>
+                <td>{{ attachedfile.ORACLEBASEPath }}</td>
+            </tr>
+            <tr>
+                <th>ORACLE_SID</th>
+                <td>{{ attachedfile.ORACLESID }}</td>
+            </tr>
+            <tr>
+                <th>SGA</th>
+                <td>{{ attachedfile.SGA }}</td>
+            </tr>
+            <tr>
+                <th>PGA</th>
+                <td>{{ attachedfile.PGA }}</td>
+            </tr>
+            <tr>
+                <th>ORACLE_version</th>
+                <td>{{ attachedfile.ORACLEVersion ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_attachedfile_index') }}">back to list</a>
+
+    <a href="{{ path('app_attachedfile_edit', {'id': attachedfile.id}) }}">edit</a>
+
+    {{ include('attachedfile/_delete_form.html.twig') }}
+{% endblock %}
